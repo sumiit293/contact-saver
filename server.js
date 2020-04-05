@@ -4,7 +4,7 @@ const app = express();
 const connectDB = require('./config/db');
 const path = require('path');
 
-
+const PORT = process.env.PORT || 5000;
 // init middleware
 app.use(express.json({ extended: false }));
 // Connect Database

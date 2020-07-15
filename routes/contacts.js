@@ -34,6 +34,12 @@ router.post('/', [auth,
     }
     const { name, email, phone, type } = req.body;
 
+    const duplicatePhone = await Contact.find({ phone: phone });
+
+    if (duplicatePhone) {
+        res.status(400).json("Phone number all ready saved");
+    }
+
     try {
         const newContact = new Contact({
             name,

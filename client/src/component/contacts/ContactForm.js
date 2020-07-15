@@ -1,11 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import contactContext from './../../context/contact/ContactContext';
-
+import AlertContext from './../../context/alert/alertContext';
 const ContactForm = () => {
 
     const ContactContext = useContext(contactContext);
 
-    const { addContact, updateContact, current, clearCurrent } = ContactContext;
+    const { addContact, updateContact, current, clearCurrent, error } = ContactContext;
+
+    const { setAlert } = useContext(AlertContext);
 
     useEffect(() => {
         if (current !== null) {
@@ -18,7 +20,10 @@ const ContactForm = () => {
                 type: 'personal'
             })
         }
-    }, [ContactContext, current])
+        if (error === "Phone number all ready saved") {
+            setAlert("Phone number all ready saved", "danger");
+        }
+    }, [ContactContext, current, error])
 
     const [contact, setContact] = useState({
         name: '',

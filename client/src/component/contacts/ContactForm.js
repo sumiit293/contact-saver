@@ -5,7 +5,7 @@ const ContactForm = () => {
 
     const ContactContext = useContext(contactContext);
 
-    const { addContact, updateContact, current, clearCurrent, error } = ContactContext;
+    const { addContact, updateContact, current, clearCurrent, error, clearError } = ContactContext;
 
     const { setAlert } = useContext(AlertContext);
 
@@ -22,6 +22,7 @@ const ContactForm = () => {
         }
         if (error === "Phone number all ready saved") {
             setAlert("Phone number all ready saved", "danger");
+            clearError();
         }
     }, [ContactContext, current, error])
 

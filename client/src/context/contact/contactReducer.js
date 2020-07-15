@@ -10,7 +10,8 @@ import {
     UPDATE_CONTACT,
     CLEAR_CURRENT,
     SET_CURRENT,
-    CLEAR_CONTACT
+    CLEAR_CONTACT,
+    CLEAR_ERRORS
 
 } from './../Types'
 
@@ -84,6 +85,12 @@ export default (state, action) => {
                 error: null
                 , current: null
             }
+        case CLEAR_ERRORS: {
+            return {
+                ...state,
+                error: null
+            }
+        }
 
         default:
             return state;

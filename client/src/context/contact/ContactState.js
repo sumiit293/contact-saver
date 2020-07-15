@@ -14,7 +14,8 @@ import {
     SET_CURRENT,
     CLEAR_FILTER,
     GET_CONTACTS,
-    CLEAR_CONTACT
+    CLEAR_CONTACT,
+    CLEAR_ERRORS
 
 } from './../Types'
 
@@ -118,6 +119,11 @@ const ContactState = props => {
     const clearFilter = () => {
         dispatch({ type: CLEAR_FILTER })
     }
+    //clear error
+
+    const clearError = () => {
+        dispatch({ type: CLEAR_ERRORS });
+    }
     return (
         <ContactContext.Provider
             value={{
@@ -133,7 +139,8 @@ const ContactState = props => {
                 clearFilter,
                 filterContact,
                 getContacts,
-                clearContacts
+                clearContacts,
+                clearError
             }}>
             {props.children}
         </ContactContext.Provider>
